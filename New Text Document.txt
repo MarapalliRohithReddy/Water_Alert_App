@@ -1,0 +1,38 @@
+
+# hello_psg.py
+
+import PySimpleGUI as sg
+from datetime import datetime
+from time import sleep
+
+def my_function():
+    layout = [[sg.Text("Paani Peelo Bhai!!!!!!!")], [sg.Button("OK")]]
+
+# Create the window
+    window = sg.Window("Demo", layout)
+
+# Create an event loop
+    while True:
+        event, values = window.read()
+    # End program if user closes window or
+    # presses the OK button
+        if event == "OK" or event == sg.WIN_CLOSED:
+            break
+    window.close()
+
+while datetime.now().minute not in {0, 15, 30, 45}:  # Wait 1 second until we are synced up with the 'every 15 minutes' clock
+    sleep(1)
+    
+my_function()
+
+while True:
+    sleep(60*15)  # Wait for 15 minutes
+    my_function()
+
+
+
+
+
+
+
+#python -m auto_py_to_exe
